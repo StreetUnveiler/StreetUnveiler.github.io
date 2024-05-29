@@ -161,7 +161,7 @@
                 <div class="link-block">
                   <!-- PDF Link. -->
                   <!-- TODO -->
-                  <span class="link-block">
+                  <!-- <span class="link-block">
                     <a
                       href=""
                       class="external-link button is-normal is-rounded is-dark"
@@ -171,7 +171,7 @@
                       </span>
                       <span>Paper(Coming soon)</span>
                     </a>
-                  </span>
+                  </span> -->
                   <span class="link-block">
                     <a
                       href="https://arxiv.org/abs/2405.18416"
@@ -270,11 +270,11 @@
       <div class="columns is-centered has-text-centered" id="video">
         <div class="column is-four-fifths">
           <h2 class="title is-2">Main Experiment Comparison</h2>
-          <h3> Select which experiment to compare.</h3>
+          <!-- <h3> Select which experiment to compare.</h3>
           <button>Main Experiment</button>
-          <button id="nvsButton">Novel View Synthesis</button>
-          <br>
-          <br>
+          <button id="nvsButton">Novel View Synthesis</button> -->
+          <!-- <br> -->
+          <!-- <br> -->
           <h3> Select which methods to compare.</h3>
           <button id="Data">Training Data</button>
           <button id="LaMa">LaMa</button>
@@ -282,16 +282,9 @@
           <button id="ProPainter">ProPainter</button>
           <button id="SPIn-NeRF">SPIn-NeRF(in 2DGS)</button>
           <button id="Infusion">Infusion</button>
-          <br>
-          <br>
-          <h3> Select which scenes to compare.</h3>
-          <button id="Scene1">Scene1</button>
-          <button id="Scene2">Scene2</button>
-          <button id="Scene3">Scene3</button>
-          <button id="Scene4">Scene4</button>
           <!-- <button id="Scene5">Scene5</button> -->
           <!-- <h4 id="pathText">File path: <strong>"./static/videos/Experiment/scene1/data_vs_ours.mp4"</strong> </h4> -->
-          <h4 >Please refresh if you don't see the video.</h4>
+          <h4 >(Please refresh if you don't see the video. Switch video will need some time to process.)</h4>
           <h3 id="compareText">
             Training Data
             &nbsp;&nbsp; 
@@ -302,6 +295,15 @@
           <video class="video" width=100% id="xyalias" loop playsinline autoplay muted src="./static/videos/Experiment/scene1/data_vs_ours.mp4" onplay="resizeAndPlay(this)"></video>
           <canvas height=0 class="videoMerge" id="xyaliasMerge"></canvas>
 
+          <br>
+          <!-- <br> -->
+          <!-- <h3> Select which scenes to compare.</h3> -->
+          <button id="Scene1">Scene1</button>
+          <button id="Scene2">Scene2</button>
+          <button id="Scene3">Scene3</button>
+          <button id="Scene4">Scene4</button>
+          <br>
+          <h4> (Click here to switch the scene)</h>
           <!-- <br>
           <br>
           <video class="video" width=100% id="original" loop playsinline autoplay muted src="./static/videos/Experiment/scene1/data_vs_ours.mp4" onplay="resizeAndPlay(this)"></video> -->
@@ -309,12 +311,30 @@
         </div>
       </div>
 
+      <section class="section">
+        <div class="columns is-centered has-text-centered" id="video">
+          <div class="column is-four-fifths">
+            <h2 class="title is-2">Novel View Synthesis</h2>
+            <!-- <h4 id="pathText">File path: <strong>"../videos/NVS/nvs1.mp4"</strong> </h4> -->
+            <h4 >(Please refresh if you don't see the video. Switch video will need some time to process.)</h4>
+            <video id="original", controls>
+              <source src="./static/videos/NVS/nvs1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            <button id="NVSScene1">Scene1</button>
+            <button id="NVSScene2">Scene2</button>
+            <br>
+            <h4> (Click here to switch the scene)</h>
+          </div>
+        </div>
+
       <script>
         let sceneNumber = 1;
         let lastFile = 'data_vs_ours.mp4';
         let lastText = 'Training Data';
         const video = document.getElementById('xyalias');
-        const original_video = document.getElementById('original');
+        // const original_video = document.getElementById('original');
         const buttonData = document.getElementById('Data');
         const buttonLaMa = document.getElementById('LaMa');
         const buttonSDXL = document.getElementById('SDXL');
@@ -384,9 +404,31 @@
         //   updateVideoSource(lastFile, lastText)
         // });
 
-        document.getElementById("nvsButton").onclick = function () {
-            location.href = "nvs.html";
+        // document.getElementById("nvsButton").onclick = function () {
+        //     location.href = "nvs.html";
+        // };
+
+        let sceneNumberNVS = 1;
+        const original_video = document.getElementById('original');
+
+        const updateNVSVideoSource = () => {
+            original_video.src = `./static/videos/NVS/nvs${sceneNumberNVS}.mp4`;
+            pathText.innerHTML = `File path: <strong>"../videos/NVS/nvs${sceneNumberNVS}.mp4"</strong>`;
         };
+
+        document.getElementById('NVSScene1').addEventListener('click', () => {
+          sceneNumberNVS = 1; 
+          updateNVSVideoSource()
+        });
+
+        document.getElementById('NVSScene2').addEventListener('click', () => {
+          sceneNumberNVS = 2; 
+          updateNVSVideoSource()
+        });
+
+        // document.getElementById("mainExp").onclick = function () {
+        //     location.href = "index.html";
+        // };
         
   
         </script>
