@@ -337,7 +337,7 @@
             <!-- <h4 id="pathText">File path: <strong>"../videos/NVS/nvs1.mp4"</strong> </h4> -->
             <h4 >(Please refresh if you don't see the video. Switch video will need some time to process.)</h4>
             <video id="original", controls>
-              <source src="./static/videos/NVS/nvs1.mp4" type="video/mp4">
+              <source src="./static/videos/NVS/nvs2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <br>
@@ -427,7 +427,7 @@
         //     location.href = "nvs.html";
         // };
 
-        let sceneNumberNVS = 1;
+        let sceneNumberNVS = 2;
         const original_video = document.getElementById('original');
 
         const updateNVSVideoSource = () => {
@@ -436,12 +436,12 @@
         };
 
         document.getElementById('NVSScene1').addEventListener('click', () => {
-          sceneNumberNVS = 1; 
+          sceneNumberNVS = 2; 
           updateNVSVideoSource()
         });
 
         document.getElementById('NVSScene2').addEventListener('click', () => {
-          sceneNumberNVS = 2; 
+          sceneNumberNVS = 1; 
           updateNVSVideoSource()
         });
 
